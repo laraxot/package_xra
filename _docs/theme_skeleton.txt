@@ -1,0 +1,33 @@
+ROOT
+|
++-Auth  [uguale a quello che c'e' in XRA\LU\view\Auth, se non esite la cartella prende quello, esiste per customizzare i vari form per il template, facendo cosi' si puo' 
+|		fare in un secondo momento]
+|
++---+Layouts
+|	+- app.blade.php (contiene quello che viene esteso sempre)
+|	+- plane.blade.php (questo viene esteso solo da app.blade.php, fatto per poter inserire in maniera dinamica i js e css)
+|
++---+Partials
+|	+-sidebar.blade.php
+|	+-htmlheader.blade.php
+|	+-scripts.blade.php
+|	+-header.blade.php
+|	+-footer.blade.php
+|
++---+Includes
+|	+Components
+|		+Form
+|
++---+Errors
+|		+404.blade.php
+|		+503.blade.php
+|
++---+Email
+|
++---+User
+|
++---+Pages
+|		+contactus
+|		+faq
+|		+privacy
+

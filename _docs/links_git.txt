@@ -1,0 +1,12 @@
+No submodule mapping found in .gitmodules for path js/jquery-browser-fingerprint
+
+[submodule "jquery-browser-fingerprint"]
+ path = /js/jquery-browser-fingerprint
+ url = git://github.com/carlo/jquery-browser-fingerprint.git
+
+
+git rm --cached js/jquery-browser-fingerprint
+git submodule update --init
+
+
+https://julienrenaux.fr/2014/08/05/how-to-use-git-submodules-to-facilitate-your-development-routine/

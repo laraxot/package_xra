@@ -1,0 +1,33 @@
+comodo dizionario di dove son posizionati i file all'interno di bower 
+https://www.codeproject.com/Articles/1039826/Angularjs-Lazy-Loading-with-Requirejs-and-OcLazylo
+
+http://simon.oconnorlamb.com/ria/2015/07/building-a-large-scale-lazy-loading-angular-application-using-angularamd/
+
+interessante cast variabile 
+http://engineering.thinknear.com/blog/2015/01/07/advanced-angular-ui-router-part-i/
+
+
+https://github.com/lucassus/angular-webpack-seed/tree/ce4e9b91ce9ed47ca74073d754b0cbacff8cb65f/src/app/contacts/one/edit
+
+//state on the fly ..
+http://plnkr.co/edit/ZXty2SkmGbuwnpaJoh7C?p=preview
+
+Centralize resolution logic
+http://www.jvandemo.com/how-to-resolve-application-wide-resources-centrally-in-angularjs-with-ui-router/
+
+webpack ?
+http://michalzalecki.com/lazy-load-angularjs-with-webpack/
+
+esempi da fare !
+https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
+
+
+http://angular-tips.com/blog/2015/11/setting-up-individual-views-with-ui-router-and-ui-router-extras/
+
+esempio con service
+http://www.funnyant.com/angularjs-ui-router/
+
+
+da rileggere
+https://medium.com/angularjs-meetup-south-london/angular-just-another-introduction-to-ngnewrouter-vs-ui-router-72bfcb228017#.3qw468d6v
+

@@ -1,0 +1,30 @@
+<root>
+    <row>
+        <id>1000</id>
+        <id_padre>0</id_padre>
+        <nome>Test</nome>
+        <img>pencil.png</img>
+        <icons>fa fa-pencil</icons>
+        <ordine />
+        <obj></obj>
+        <act></act>
+        <funzione></funzione>
+        <subtitle />
+        <txt />
+        <query>a:0:{}</query>
+        <order_by>a:0:{}</order_by>
+        <load_tables>liveuser_users</load_tables>
+        <fieldstorender>auth_user_id,handle,passwd,email,nome,cognome,ente,matr</fieldstorender>
+        <hiddenfields />
+        <defaults>a:0:{}</defaults>
+        <visibility />
+        <processed />
+        <js_head /> 
+        <js_foot />
+        <id_approvaz />
+        <handle />
+        <datemod />
+        <last_stato />
+        <querystr_keys>auth_user_id</querystr_keys>
+    </row>
+</root>

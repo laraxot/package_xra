@@ -1,0 +1,2 @@
+//---- non e' un checkbox, ma visivamente e' quello che vogliamo con si/no, e questo passa sempre un valore
+https://github.com/wpic/bootstrap-select-togglebutton

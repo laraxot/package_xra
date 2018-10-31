@@ -1,0 +1,79 @@
+https://www.sitepoint.com/finding-date-picker-input-solution-bootstrap/
+webshim
+polyfiller
+https://codepen.io/SitePoint/pen/VYexoy
+
+https://www.west-wind.com/WestwindWebToolkit/samples/Ajax/html5andCss3/Html5InputControls.aspx
+
+https://www.w3schools.com/html/tryit.asp?filename=tryhtml_input_color
+
+https://weblog.west-wind.com/posts/2012/Nov/08/HTML5-Input-typedate-Formatting-Issues
+
+https://www.tjvantoll.com/2012/06/30/creating-a-native-html5-datepicker-with-a-fallback-to-jquery-ui/
+
+http://html5doctor.com/using-modernizr-to-detect-html5-features-and-provide-fallbacks/
+
+https://modernizr.com/download/?contenteditable-input-inputtypes-setclasses-shiv
+
+https://stackoverflow.com/questions/22983013/how-to-get-html-5-input-type-date-working-in-firefox-and-or-ie-10
+
+http://jsfiddle.net/trixta/BMEc9/  !!!
+
+http://afarkas.github.io/webshim/demos/index.html
+
+https://code.tutsplus.com/tutorials/quick-tip-create-cross-browser-datepickers-in-minutes--net-20236
+
+
+http://t1m0n.name/air-datepicker/docs/  
+
+http://amsul.ca/pickadate.js/  mobile  !!!!!!!
+
+https://uxsolutions.github.io/bootstrap-datepicker/?markup=input&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&keyboardNavigation=on&forceParse=on#sandbox
+
+https://longbill.github.io/jquery-date-range-picker/
+
+
+https://chmln.github.io/flatpickr/examples/  !!
+
+
+http://jonthornton.github.io/Datepair.js/ ti propone data di fine, sembra leggibile
+
+https://nehakadam.github.io/DateTimePicker/  calendario buono per date vicine
+
+https://glad.github.io/glDatePicker/#examples
+
+http://ericjgagnon.github.io/wickedpicker/
+
+
+https://eonasdan.github.io/bootstrap-datetimepicker/
+
+
+http://foundation-datepicker.peterbeno.com/example.html
+
+https://fengyuanchen.github.io/datepicker/
+
+
+https://www.cssscript.com/tag/date-picker/  ------- orologio a lancette.. 
+
+
+http://demos.jquerymobile.com/1.4.5/datepicker/    pulizia
+
+
+
+https://themekraft.com/find-the-best-date-and-time-picker-to-work-nice-with-any-screen-size/
+
+http://jqueryhouse.com/best-jquery-date-time-picker-plugins/
+
+http://www.vandelaydesign.com/30-best-free-jquery-plugins/
+
+https://www.cssscript.com/tag/calendar/
+
+
+
+
+
+
+
+
+
+

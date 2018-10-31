@@ -1,0 +1,3 @@
+https://tuts.codingo.me/laravel-5-1-and-dropzone-js-auto-image-uploads-with-removal-links/
+https://github.com/wpic/imageuplodify
+

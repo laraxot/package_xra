@@ -1,0 +1,12 @@
+<root>
+    <row>
+        <id>1022</id>
+        <id_padre>1020</id_padre>
+        <nome>Test Croppic</nome>
+        <img>pencil.png</img>
+        <icons>fa fa-pencil</icons>
+        <ordine />
+        <obj>xra.testimg</obj>
+        <act>croppic</act>
+    </row>
+</root>

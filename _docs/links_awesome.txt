@@ -1,0 +1,26 @@
+https://getawesomeness.herokuapp.com/get/laravel
+
+http://esen.si/#packages
+
+https://laracogs.com/docs/kits/starter/
+
+//-----particles ---
+http://vincentgarreau.com/particles.js/
+https://codepen.io/VincentGarreau/pen/pnlso
+
+
+
+//-----installer 
+https://github.com/RachidLaasri/LaravelInstaller
+
+
+//------ geo ip
+http://ip2nation.com/
+
+
+//------- min js on the fly
+https://devhub.io/repos/tonglil-laravel-assetic
+
+
+
+https://www.jqueryscript.net/tags.php?/Bootstrap/

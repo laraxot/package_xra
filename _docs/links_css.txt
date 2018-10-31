@@ -1,0 +1,20 @@
+$(document).ready(function(){
+  $.ajax({
+    url: fontFile,
+    beforeSend: function ( xhr ) {
+      xhr.overrideMimeType("application/octet-stream");
+    },
+    success: function(data) {
+      $("<link />", {
+        'rel': 'stylesheet'
+        'href': 'URL/TO/fonts.css'
+      }).appendTo('head');
+    }
+  });
+});
+
+
+
+//----- comprime e ristruttura..
+http://css.github.io/csso/csso.html
+

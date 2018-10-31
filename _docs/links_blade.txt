@@ -1,0 +1,8 @@
+<a href="URL" @if(Request::url() == url('/')) class="active"  @endif >Home</a>
+<a href="URL" @if(Request::fullUrl() == 'your-string') class="active"  @endif >Page</a>
+<a href="URL" @if(Request::segment(2) == 'about') class="active"  @endif >Page</a>
+<a href="URL" @if(Request::path() == '/post/post-title') class="active"  @endif >Page</a>
+
+ <li class="{{ Request::is('*/servicos') ? "active" : "" }}">
+        <a href="{{ Route::getCurrentRoute()->parameters()['domain'] . "/servicos" }}">Serviços</a>
+    </li>

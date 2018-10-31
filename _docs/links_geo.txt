@@ -1,0 +1,10 @@
+https://github.com/spatie/geocoder
+
+https://community.algolia.com/places/examples.html
+
+https://m.serversideup.net/api-driven-development-with-laravel-and-vuejs-c30869060bb1
+
+https://github.com/serversideup/roastandbrew
+
+
+

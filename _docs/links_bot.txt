@@ -1,0 +1,15 @@
+https://chatbotslife.com/how-to-create-a-restaurant-chatbot-part-2-fabae87cf58f
+
+Connect Chatbot to Facebook Messenger
+
+https://dialogflow.com/docs/sdks
+
+https://gist.github.com/Gugic/cfc008599fa9a82eeba4127648009132
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-example-utterances
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-get-started-create-app
+
+https://msdn.microsoft.com/en-us/library/hh362887(v=office.14).aspx
+
+http://bothub.ai/en/

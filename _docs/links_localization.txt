@@ -1,0 +1,5 @@
+https://github.com/mcamara/laravel-localization
+
+https://github.com/dimsav/laravel-translatable#demo
+
+

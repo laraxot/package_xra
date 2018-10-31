@@ -1,0 +1,12 @@
+-- esempi --
+
+https://codequs.com/p/B1LeDhBF/Laravel%205.2%20-%20Image%20Crop%20and%20Edit%20Example/
+
+--
+http://guillotine.js.org/
+--
+
+https://packagist.org/packages/noonic/image
+
+http://www.omegaweb.com/10-useful-jquery-image-crop-plugin-with-demos/
+

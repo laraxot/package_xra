@@ -1,0 +1,75 @@
+This package syncs post data from a wordpress.com blog to Laravel (see note at bottom for self-hosted wordpress)
+--- ottimo per progetto seo, che dobbiamo pubblicare nel nostro progetto articoli di altri fonti
+https://github.com/jasonherndon/WordpressToLaravel
+
+
+This is a library package to use Laravel's Eloquent ORM with WordPress.
+--- guardare come gestisce il prefix delle tabelle, utile perche' fornisce una traduzione da quello che fa wordpress in laravel (simile non uguale)
+https://github.com/tareq1988/wp-eloquent
+
+Laravel 5 package for the Wordpress JSON REST API
+--- altra traduzione dei comandi wordpress in laravel
+https://github.com/Cyber-Duck/laravel-wp-api
+
+A modern WordPress stack. Don't repeat yourself. https://wordplate.github.io/
+--- installazione da composer
+https://github.com/wordplate/wordplate
+
+Setting up a Laravel API with a Wordpress backend
+--- trait wordpress
+https://cmandersen.com/setting-up-a-laravel-api-with-a-wordpress-backend/
+
+
+Working with Laravel 4 or 5 and Wordpress together
+--- librerie ed esempi
+http://blog.jgrossi.com/2014/working-with-laravel-4-and-wordpress-together/
+
+
+Integrating Laravel into WordPress
+--- pacchetto wordpress
+https://nehalist.io/integrating-laravel-into-wordpress/
+
+
+Blade for WordPress
+--- vogliamo il contrario, ma vedere librerie
+https://github.com/tormjens/wp-blade
+
+loading Laravel with WordPress.
+--- studiare integrazioni 
+https://rup.wordpress.org/plugins/larapress/
+
+
+Using WordPress with Lumen
+--- integrazione con varie librerie
+https://www.adampatterson.ca/blog/2015/06/using-wordpress-with-lumen/
+
+
+So what can Laravel do?
+--- librerie
+https://www.aaroncollegeman.com/do-more-with-wordpress-faster/
+
+How to use WordPress as a backend for a Laravel Application
+--- sempre per il pacchetto
+https://laravel-news.com/wordpress-api-with-laravel
+
+
+WordPress boilerplate with modern development tools, easier configuration, and an improved folder structure.
+---- 
+https://roots.io/bedrock/
+
+
+
+Oasis Workflow is a powerful, flexible, and visual way to automate your WordPress Editorial Review Process.
+--- worflow
+https://www.oasisworkflow.com/
+
+
+
+adds basic support for managing themes
+--- confronto con il nostro themeservice
+https://github.com/igaster/laravel-theme
+
+
+Laravel 5 feat. WordPress. Use Lumen.
+--- esempio completo ?
+https://github.com/jumilla/wordpress-plus

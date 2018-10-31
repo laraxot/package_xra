@@ -1,0 +1,15 @@
+//sembra manchi parte "variazioni"
+https://cartalyst.com/manual/cart/2.0
+
+//javascript 
+https://codepen.io/justinklemm/pen/zAdoJ
+
+https://bootsnipp.com/snippets/featured/shopping-cart-panel-bs-3
+
+https://bootsnipp.com/snippets/featured/shopping-cart-bs-3
+
+https://bootsnipp.com/snippets/featured/responsive-shopping-cart
+
+https://tutorialzine.com/2014/04/responsive-shopping-cart-layout-twitter-bootstrap-3
+
+https://cssauthor.com/e-commerce-website-templates/

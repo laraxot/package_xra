@@ -1,0 +1,12 @@
+<root>
+    <row>
+        <id>1016</id>
+        <id_padre>1000</id_padre>
+        <nome>Test Nav Form</nome>
+        <img>pencil.png</img>
+        <icons>fa fa-pencil</icons>
+        <ordine />
+        <obj>xra.test</obj>
+        <act>navform</act>
+    </row>
+</root>

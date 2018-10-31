@@ -1,0 +1,30 @@
+return $this->hasOne('App\Phone', 'foreign_key', 'local_key');
+return $this->belongsTo('App\User', 'foreign_key', 'other_key');
+belongs = appartiene
+
+[bar]
+id
+name
+foo_id
+
+[foo]
+id
+name
+
+
+bar belongs_to foo
+foo has_one bar
+
+
+[user]
+id
+first_name
+last_name
+
+[profile]
+id
+user_id
+bla bla
+
+user has_one profile
+profile belogs_to user 

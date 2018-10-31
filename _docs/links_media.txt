@@ -1,0 +1,1 @@
+https://docs.spatie.be/laravel-medialibrary/v6/introduction

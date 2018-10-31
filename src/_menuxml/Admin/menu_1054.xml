@@ -1,0 +1,12 @@
+<root>
+	<row>
+		<id>1054</id>
+		<id_padre>1050</id_padre>
+		<nome>Fuzzy Search</nome>
+		<img>pencil.png</img>
+		<icons>fa fa-pencil</icons>
+		<ordine />
+		<obj>xra.testtnt</obj>
+		<act>fuzzysearch</act>
+	</row>
+</root>

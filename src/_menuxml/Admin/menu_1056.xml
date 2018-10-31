@@ -1,0 +1,12 @@
+<root>
+	<row>
+		<id>1056</id>
+		<id_padre>1050</id_padre>
+		<nome>Geo Search</nome>
+		<img>pencil.png</img>
+		<icons>fa fa-pencil</icons>
+		<ordine />
+		<obj>xra.testtnt</obj>
+		<act>geosearch</act>
+	</row>
+</root>

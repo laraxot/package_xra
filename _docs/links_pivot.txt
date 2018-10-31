@@ -1,0 +1,121 @@
+http://laraveldaily.com/pivot-tables-and-many-to-many-relationships/
+
+return $this->belongsToMany('App\Role')->withPivot('column1', 'column2');
+
+foreach ($turma->professores as $professore) {
+    $professore->pivot->Professor_Turma;
+}
+
+ public function works() {
+        return $this->belongsToMany('Work','user_works')->withPivot('active')->withTimestamps();
+    }
+
+
+//-----------------------------------------
+$tl = Todolist::find(1);
+
+$category = new Category(['name' => 'Vacation']);
+
+$tl->categories()->save($category);
+
+//-------------------------------------------
+$list = Todolist::find(2);
+
+$category = Category::find(1)
+
+// In this example we're passing in a Category object
+$list->categories()->attach($category);
+
+// The number 5 is the primary key of another category
+$list->categories()->attach(5);
+//-------------------------------------------
+
+http://www.easylaravelbook.com/blog/2016/04/06/introducing-laravel-many-to-many-relations/
+
+//------------------------
+$owners = Company::users()->wherePivot('owner', 1)->get();
+$owners = Company::users()->where('company_user.owner', 1);
+
+//---------------------- 
+public function users(){
+        return $this->belongsToMany('User','store_user_permissions','store_id','user_id')
+            ->withPivot('permission_id')
+            ->join('permissions','permission_id','=','permissions.id')
+            ->select('permissions.name as pivot_permission_name');
+    }
+//-----------------------
+return Post::whereHas('postCategory', function($q)
+{
+    $user = Auth::user();
+    $user_categories = $user->userCategory()->lists('cat_id');
+    $q->whereIn('cat_id', $user_categories);
+ 
+})->where('public_state','=','1')->get();
+//-------------------------
+
+public function contacts(){
+	return $this->belogsToMany(Contact::class)->withTimestamps()->witPivot('status','preferred_grreting');
+}
+
+$user=User::first();
+
+$user->contacts->each(function($contact){
+	echo sprintf(
+		'contact ass at: %s',
+		$contact->pivot->created_at
+	);
+})
+
+
+//---------------------------
+
+public function assign_role($user_id,$role_id) {
+    $user = App\User::find($user_id);
+    try {
+        $user->roles()->attach($role_id);
+    } catch(QueryException $e) {
+        if (preg_match('/Duplicate entry/',$e->getMessage())){
+            return response([
+                'success' => false,
+                'message' => 'Role exists for that user'
+            ], 500);
+        }
+    }
+}
+
+//--------------------------------
+mysql> desc tags;
++------------+------------------+------+-----+---------+----------------+
+| Field      | Type             | Null | Key | Default | Extra          |
++------------+------------------+------+-----+---------+----------------+
+| id         | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(255)     | NO   | UNI | NULL    |                |
+| count      | int(10) unsigned | NO   |     | NULL    |                |
+| created_at | timestamp        | YES  |     | NULL    |                |
+| updated_at | timestamp        | YES  |     | NULL    |                |
++------------+------------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+public static function updateCounts()
+{
+  foreach(Tag::withCount('posts')->get() as $tag)
+  {
+    if($tag->count != $tag->posts_count)
+    {
+      $tag->count = $tag->posts_count;
+      $tag->save();
+    }
+  }
+}
+
+
+//-----------------------------------
+
+
+
+
+
+
+
+
+

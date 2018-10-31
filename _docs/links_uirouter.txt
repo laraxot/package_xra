@@ -1,0 +1,57 @@
+material design con facce carine..
+http://www.bossable.com/1745/angularjs-material-design-contact-form/
+
+multi step form .. installer 
+http://corpus.hubwiz.com/2/angularjs/26043295.html
+
+metodi spiegati bene
+http://qiita.com/59naga/items/5fbbd6e951af887388da
+
+login 
+http://brewhouse.io/blog/2014/12/09/authentication-made-simple-in-single-page-angularjs-applications.html
+
+
+form submit 
+http://shincoding.com/angularjs/programmatically-submitting-angularjs-form-to-an-external-url/
+
+
+angular resolve
+https://medium.com/opinionated-angularjs/advanced-routing-and-resolves-a2fcbf874a1c#.bkp22mqjx
+
+
+state management
+http://txt.fliglio.com/2013/05/angularjs-state-management-with-ui-router/
+
+route vs ui-router
+http://www.funnyant.com/angularjs-ui-router/
+
+
+yo angular
+https://docs.stormpath.com/angularjs/guide/register.html
+
+
+albero senza rami... ma xe' albero
+http://jasonwatmore.com/post/2016/01/20/angular-nganimate-tutorial-with-ui-router
+
+angularjs client
+https://loopback.io/doc/en/lb2/Create-AngularJS-client.html
+
+add ite
+https://coderwall.com/p/urgijw/simple-automatic-toggle-effect-with-angular-s-ui-router
+
+app angular
+https://onsen.io/blog/onsen-ui-router-app/
+
+pasing stave via routes
+https://rclayton.silvrback.com/passing-state-via-routes
+
+AngularJS Unit Testing
+http://onehungrymind.com/quickstart/
+
+http://www.jonahnisenson.com/angular-js-ui-router-redirect-after-login-to-requested-url/
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+https://beat.10ztalk.com/2018/01/01/auto-posting-to-social-network-in-laravel/
+https://github.com/toolkito/laravel-social-auto-posting/tree/master/src
+
+https://github.com/edujugon/SocialAutoPost
+
+https://github.com/SammyK/LaravelFacebookSdk
+
+http://www.pontikis.net/blog/auto_post_on_facebook_with_php

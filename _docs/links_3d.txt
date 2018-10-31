@@ -1,0 +1,16 @@
+http://www.eleqtriq.com/2010/11/natural-object-rotation-with-css3-3d/
+
+http://jsfiddle.net/AXAeG/
+
+https://www.smashingmagazine.com/2016/07/front-end-challenge-accepted-css-3d-cube/
+
+http://codepen.io/jordizle/pen/haIdo/
+
+http://stackoverflow.com/questions/17871528/create-a-rotating-cube-with-only-css
+
+http://www.the-art-of-web.com/css/3d-transforms/
+
+http://cssdeck.com/labs/css3-flipping-cube
+
+http://cssdeck.com/labs/simple-css3-3d-cube
+

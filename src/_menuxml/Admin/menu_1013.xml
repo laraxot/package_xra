@@ -1,0 +1,12 @@
+<root>
+    <row>
+        <id>1013</id>
+        <id_padre>1000</id_padre>
+        <nome>Test Chunk Upload Input Form</nome>
+        <img>pencil.png</img>
+        <icons>fa fa-pencil</icons>
+        <ordine />
+        <obj>xra.test</obj>
+        <act>chunkuploadinputform</act>
+    </row>
+</root>

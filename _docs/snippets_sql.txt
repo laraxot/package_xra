@@ -1,0 +1,48 @@
+ALTER TABLE `trasferte`
+	ADD COLUMN `created_at` TIMESTAMP NULL DEFAULT NULL AFTER `auth_tmp`,
+	ADD COLUMN `updated_at` TIMESTAMP NULL DEFAULT NULL AFTER `created_at`,
+	ADD COLUMN `created_by` VARCHAR(250) NULL DEFAULT NULL AFTER `updated_at`,
+	ADD COLUMN `updated_by` VARCHAR(250) NULL DEFAULT NULL AFTER `created_by`;
+
+
+http://www.webpagetest.org/
+
+https://gtmetrix.com/
+
+
+https://www.pingdom.com/
+
+https://varvy.com/tools/css-delivery/
+
+https://developers.google.com/speed/pagespeed/
+
+https://developers.google.com/speed/pagespeed/insights/
+
+https://search.google.com/search-console/mobile-friendly?utm_source=psi&utm_medium=link&utm_campaign=psi-ux-banner&hl=it-IT
+
+https://tools.pingdom.com/
+
+https://www.webpagetest.org/
+
+
+https://www.godaddy.com/garage/webpro/development/5-steps-for-optimizing-the-load-time-of-web-pages/
+
+https://toddmotto.com/echo-js-simple-javascript-image-lazy-loading/
+
+http://www.gziptest.com/
+
+http://www.hongkiat.com/blog/ultimate-guide-to-web-optimization-tips-best-practices/
+
+
+http://www.w3schools.com/tags/att_script_defer.asp
+http://www.w3schools.com/tags/att_script_async.asp
+
+https://www.keycdn.com/blog/website-performance-optimization/  !!
+
+https://laracasts.com/index.php/discuss/channels/general-discussion/add-content-length-header-on-views?page=1
+
+https://scotch.io/tutorials/caching-in-laravel-with-speed-comparisons
+
+
+admin carino
+http://madmin.swlabs.co/#/ui-treeview

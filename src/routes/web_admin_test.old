@@ -1,0 +1,20 @@
+<?php
+$namespace=$this->getNamespace();
+$namespace.='\Controllers\Admin';
+
+/*
+$middleware=['web','guest'];
+$prefix='admin\test';
+// 'middleware' => $middleware,
+Route::group(['prefix' => $prefix,  'namespace' => $namespace.'\\'.ucwords($prefix),'as'=>'test.' ]
+, function () {
+    Route::get('/', 				  ['as'=>'category',	'uses'=>'TestController@test01'] );
+    //Route::get('cat/{guid_category}', ['as'=>'category',	'uses'=>'CategoryController@show'] );
+    //Route::get('post/{guid_post}'	, ['as'=>'post',		'uses'=>'PostController@show'] );
+});
+
+$this->routes();
+
+*/
+
+Route::any('admin/test', ['as'=>'test',    'uses'=>$namespace.'\\TestController@test01']);

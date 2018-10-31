@@ -1,0 +1,11 @@
+<root>
+	<row>
+		<id>1062</id>
+		<id_padre>1060</id_padre>
+		<nome>fb token</nome>
+		<icons>fa fa-pencil</icons>
+		<ordine />
+		<obj>xra.fb</obj>
+		<act>token</act>
+	</row>
+</root>

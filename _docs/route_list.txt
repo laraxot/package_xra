@@ -1,0 +1,22 @@
++--------+----------+------------------------------+----------------------+------------------------------------------------------------------------+------------+
+| Domain | Method   | URI                          | Name                 | Action                                                                 | Middleware |
++--------+----------+------------------------------+----------------------+------------------------------------------------------------------------+------------+
+|        | GET|HEAD | /                            | home                 | App\Http\Controllers\HomeController@index                              | web,auth   |
+|        | GET|HEAD | _debugbar/assets/javascript  | debugbar.assets.js   | Barryvdh\Debugbar\Controllers\AssetController@js                       |            |
+|        | GET|HEAD | _debugbar/assets/stylesheets | debugbar.assets.css  | Barryvdh\Debugbar\Controllers\AssetController@css                      |            |
+|        | GET|HEAD | _debugbar/clockwork/{id}     | debugbar.clockwork   | Barryvdh\Debugbar\Controllers\OpenHandlerController@clockwork          |            |
+|        | GET|HEAD | _debugbar/open               | debugbar.openhandler | Barryvdh\Debugbar\Controllers\OpenHandlerController@handle             |            |
+|        | GET|HEAD | api/getRepartsFromStabi      |                      | App\Http\Controllers\ApiXController@getRepartsFromStabi                | web        |
+|        | GET|HEAD | api/user                     |                      | App\Http\Controllers\ApiXController@getRepartsFromStabi                | web        |
+|        | GET|HEAD | find                         |                      | App\Http\Controllers\SearchController@find                             | web        |
+|        | GET|HEAD | home                         |                      | App\Http\Controllers\HomeController@index                              | web,auth   |
+|        | GET|HEAD | login                        | login                | App\Http\Controllers\Auth\LoginController@showLoginForm                | web,guest  |
+|        | POST     | login                        |                      | App\Http\Controllers\Auth\LoginController@login                        | web,guest  |
+|        | POST     | logout                       | logout               | App\Http\Controllers\Auth\LoginController@logout                       | web        |
+|        | POST     | password/email               |                      | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web,guest  |
+|        | GET|HEAD | password/reset               | password.request     | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web,guest  |
+|        | POST     | password/reset               |                      | App\Http\Controllers\Auth\ResetPasswordController@reset                | web,guest  |
+|        | GET|HEAD | password/reset/{token}       | password.reset       | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web,guest  |
+|        | GET|HEAD | register                     | register             | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest  |
+|        | POST     | register                     |                      | App\Http\Controllers\Auth\RegisterController@register                  | web,guest  |
++--------+----------+------------------------------+----------------------+------------------------------------------------------------------------+------------+

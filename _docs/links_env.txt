@@ -1,0 +1,82 @@
+https://github.com/laravel/framework/issues/23511
+
+/*
+ * Let's make sure we load an environment appropriate for the server the code is running on
+ */
+$hostname = gethostname();
+if (($d = strpos($hostname, '.')) !== false) {
+  $hostname = substr($hostname, 0, $d);
+}
+putenv('APP_ENV=' . $hostname);
+
+
+-----------------
+
+I've implemented this at bootstrap/app.php just after $app creation:
+
+$app = new Illuminate\Foundation\Application(
+    realpath(__DIR__.'/../')
+);
+
+switch(array_shift(explode(".",$_SERVER['HTTP_HOST']))){
+    case 'sub1':
+        $app->loadEnvironmentFrom('.env.sub1');		
+        break;
+    default:
+	$app->loadEnvironmentFrom('.env');
+	break;
+};
+
+----------------------
+
+index.php
+
+$tmp = explode('.', $request->getHost());
+$subdomain = count($tmp) === 3 ? current($tmp) : '';
+if (empty($subdomain) || realpath(__DIR__ . "/../.{$subdomain}.env") === false) {
+die("Sorry, I think you are at wrong place, you shouldn't be here :).");
+}
+$app->loadEnvironmentFrom(".{$subdomain}.env");
+$response = $kernel->handle($request)
+$response->send();
+$kernel->terminate($request, $response);
+
+----------------------
+
+In bootstrap/app.php add after the app initialisation:
+
+//own env directory for separate env files
+$app->useEnvironmentPath( realpath(__DIR__ . '/../env/') );
+//separate files for each domain (see htaccess)
+$app->loadEnvironmentFrom( getenv('APP_DOMAIN') . '.env' );
+
+----------------------
+
+added in the bootstrap/app.php
+
+if (isset($_SERVER['HTTP_HOST'])) {
+    $hostArray = explode('.', $_SERVER['HTTP_HOST']);
+    //if the address is a subdomain and exist the .xxx.env file
+    $envFile = sprintf('.%s.env', $hostArray[0]);
+    if (count($hostArray) >  2 && file_exists(sprintf('%s/%s', $app['path.base'], $envFile))) {
+        $app->loadEnvironmentFrom($envFile);
+    }
+}
+
+--------------------
+
+// AppServiceProvider.php
+
+public function boot() {
+    // alter .env path
+        app()->useEnvironmentPath(base_path('..'));
+}
+
+-------------------
+
+
+
+
+
+
+

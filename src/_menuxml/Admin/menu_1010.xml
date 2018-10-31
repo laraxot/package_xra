@@ -1,0 +1,12 @@
+<root>
+    <row>
+        <id>1010</id>
+        <id_padre>1000</id_padre>
+        <nome>Test Google Input Form</nome>
+        <img>pencil.png</img>
+        <icons>fa fa-pencil</icons>
+        <ordine />
+        <obj>xra.test</obj>
+        <act>googleinputform</act>
+    </row>
+</root>
