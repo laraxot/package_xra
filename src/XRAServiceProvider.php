@@ -31,9 +31,9 @@ class XRAServiceProvider extends ServiceProvider{
 		// Load middlewares
 		$router->aliasMiddleware('checkarea', Middleware\CheckArea::class);
 		//dd($_SERVER);
-		if(isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME']!='localhost' 
+		if(isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME']!='localhost'
 			&& isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == "https"
-			//&& substr($_SERVER['SERVER_NAME'],0,strlen('www.'))=='www.'  
+			//&& substr($_SERVER['SERVER_NAME'],0,strlen('www.'))=='www.'
 		){
 			URL::forceScheme('https');
 		}
@@ -44,7 +44,7 @@ class XRAServiceProvider extends ServiceProvider{
 		Blade::if('env', function ($env) {
 			return app()->environment($env);
 		});
-		
+
 		Blade::directive('rn', function($name) {
 			return '<?php if(Route::currentRouteName() == $name) echo "active"; ?>';
 		});
@@ -60,10 +60,10 @@ class XRAServiceProvider extends ServiceProvider{
 			foreach (Packages::all($vendor) as $package) {
 				$provider = Packages::provider($package, $vendor);
 				//echo '<br/>'.$vendor.'  '.$package.' '.$provider; //4 debug
-				
+
 				//dd($migrate_packs);
 			   // echo '<pre>'.strtolower($package).'</pre>';
-				
+
 
 				if(!is_array($enable_packs) || ( is_array($enable_packs) && in_array(strtolower($package),$enable_packs) ) ){
 					//echo '<br/>'.$vendor.'  '.$package.' '.$provider; //4 debug
@@ -82,15 +82,15 @@ class XRAServiceProvider extends ServiceProvider{
 	/* //--- non funziona.. fare test per farlo funzionare o si cancella
 	public function register(){
 		$this->registerTrait();
-        
+
         $this->app->singleton('form', function ($app) {
             $form = new CustomInputService($app['html'], $app['url'], $app['view'], $app['session.store']->token());
             return $form->setSessionStore($app['session.store']);
 		});
-		
+
 	}
 	*/
-	
+
 
 //--------------------------
 }//end class
