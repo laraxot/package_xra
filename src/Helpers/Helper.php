@@ -115,3 +115,9 @@ if (! function_exists('arraySave')) {
 		\File::put($filename, $content);
 	}
 }
+
+if (! function_exists('in_admin')) {
+	function in_admin(){
+		return \Request::segment(1)=='admin';
+	}
+}
