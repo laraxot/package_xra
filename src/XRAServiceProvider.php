@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\URL;
 
 use XRA\XRA\Services\CustomInputService;
 
+use XRA\XRA\Utilities\AdminNotify;
+use XRA\XRA\Utilities\SlackAdminNotify;
+
 
 class XRAServiceProvider extends ServiceProvider{
 	use ServiceProviderTrait{
