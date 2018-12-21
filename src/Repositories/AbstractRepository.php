@@ -14,7 +14,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use XRA\XRA\Interfaces\RepositoryContract;
 use XRA\XRA\Exceptions\RepositoryException;
 
-abstract class AbstractRepository implements RepositoryContract{
+abstract class AbstractRepository implements RepositoryContract
+{
     use Cacheable;
 
     /**
@@ -162,7 +163,8 @@ abstract class AbstractRepository implements RepositoryContract{
      *
      * @return self
      */
-    public function newQuery($skipOrdering = false){
+    public function newQuery($skipOrdering = false)
+    {
         $this->query = $this->getNew()->newQuery();
 
         // Apply order by
@@ -188,7 +190,8 @@ abstract class AbstractRepository implements RepositoryContract{
      *
      * @return Model|Collection
      */
-    public function find($id, $columns = ['*']){
+    public function find($id, $columns = ['*'])
+    {
         $this->newQuery();
 
         return $this->query->find($id, $columns);
@@ -260,15 +263,15 @@ abstract class AbstractRepository implements RepositoryContract{
      *
      * @return mixed
      */
-    public function findWhere(array $where, $columns = ['*']){
+    public function findWhere(array $where, $columns = ['*'])
+    {
         $this->newQuery();
 
         foreach ($where as $field => $value) {
             if (is_array($value)) {
                 list($field, $condition, $val) = $value;
                 $this->query->where($field, $condition, $val);
-            }
-            else {
+            } else {
                 $this->query->where($field, '=', $value);
             }
         }
@@ -277,13 +280,13 @@ abstract class AbstractRepository implements RepositoryContract{
     }
 
 
-    public function getRoots(){
+    public function getRoots()
+    {
         $this->newQuery();
         $roots=[];
         $lang=\App::getLocale();
-		foreach(config('xra.model') as $k=>$v){
-            $roots[$k]=$this->query->firstOrCreate(['lang'=>$lang,'guid'=>$k,'type'=>$k],['title'=>$k.' '.$lang]);
-            
+        foreach (config('xra.model') as $k=>$v) {
+            $roots[$k]=$this->query->firstOrCreate(['lang'=>$lang,'guid'=>$k,'type'=>$k], ['title'=>$k.' '.$lang]);
         }
         return $roots;
     }
@@ -360,7 +363,9 @@ abstract class AbstractRepository implements RepositoryContract{
                 $value = Arr::get($queries, $param, '');
 
                 // Validate value
-                if ($value === '' || $value === null) continue;
+                if ($value === '' || $value === null) {
+                    continue;
+                }
 
                 // Columns should be an array
                 $columns = (array)$columns;
@@ -401,8 +406,7 @@ abstract class AbstractRepository implements RepositoryContract{
                             $this->createSearchClause($q, $param, $column, $value, 'or');
                         }
                     });
-                }
-                else {
+                } else {
                     $this->createSearchClause($query, $param, $columns[0], $value);
                 }
             }
@@ -689,7 +693,6 @@ abstract class AbstractRepository implements RepositoryContract{
     public function getErrorMessage($default = '')
     {
         return $this->errors->first('message') ?: $default;
-
     }
 
     /**
@@ -719,11 +722,9 @@ abstract class AbstractRepository implements RepositoryContract{
     {
         if ($param === 'query') {
             $query->where($this->appendTableName($column), self::$searchOperator, '%' . $value . '%', $boolean);
-        }
-        elseif (is_array($value)) {
+        } elseif (is_array($value)) {
             $query->whereIn($this->appendTableName($column), $value, $boolean);
-        }
-        else {
+        } else {
             $query->where($this->appendTableName($column), '=', $value, $boolean);
         }
     }

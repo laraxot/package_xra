@@ -1,5 +1,5 @@
 http://laravel-recipes.com/recipes/199/registering-a-service-provider-with-the-application
-<?php 
+<?php
 App::register('MyApp\Providers\MyServiceProvider');
 
 // or

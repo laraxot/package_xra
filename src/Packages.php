@@ -18,11 +18,13 @@ use Illuminate\Support\Facades\Facade;
  *
  * @author Erik Campobadal <soc@erik.cat>
  */
-class Packages extends Facade{
+class Packages extends Facade
+{
     /**
      * Returns an array of all the installed packages.
      */
-    public static function all($vendor=null){
+    public static function all($vendor=null)
+    {
         // Check for Laralum packages
         $packages = [];
         if ($vendor==null) {
@@ -44,7 +46,8 @@ class Packages extends Facade{
     /**
      * Returns an array of all the installed packages.
      */
-    public static function allVendors(){
+    public static function allVendors()
+    {
         // Check for Laralum packages
         $packages = [];
         $location = __DIR__.'/../../../';

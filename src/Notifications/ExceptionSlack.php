@@ -9,7 +9,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\URL;
 use Carbon\Carbon;
 
-class ExceptionSlack extends Notification implements ShouldQueue{
+class ExceptionSlack extends Notification implements ShouldQueue
+{
     use Queueable;
 
     public $msg='';
@@ -19,7 +20,8 @@ class ExceptionSlack extends Notification implements ShouldQueue{
      *
      * @return void
      */
-    public function __construct(\Exception $e){
+    public function __construct(\Exception $e)
+    {
         //ddd($e);
         $this->msg.=chr(13).'Line   :    '.$e->getLine();
         $this->msg.=chr(13).'File   :    '.$e->getFile();
@@ -34,11 +36,13 @@ class ExceptionSlack extends Notification implements ShouldQueue{
      * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable){
+    public function via($notifiable)
+    {
         return ['slack'];
     }
 
-    public function toSlack($notifiable){
+    public function toSlack($notifiable)
+    {
         $content=$this->msg;//$e->getMessage();
         return (new SlackMessage)
             ->content($content);

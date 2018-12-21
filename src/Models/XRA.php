@@ -9,5 +9,6 @@ use Carbon\Carbon;
 //------ ext models---
 use Xot\Sigma\Models\Anag;
 
-class XRA extends Model{
+class XRA extends Model
+{
 }

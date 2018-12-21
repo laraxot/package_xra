@@ -5,8 +5,8 @@ use GuzzleHttp\Client as HttpClient;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
 
-class SlackAdminNotify extends AdminNotify {
-
+class SlackAdminNotify extends AdminNotify
+{
     protected $webhookUrl;
 
     protected function setConfig($config)

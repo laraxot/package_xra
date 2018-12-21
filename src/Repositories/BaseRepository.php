@@ -1,6 +1,7 @@
-<?php 
+<?php
 
 namespace XRA\XRA\Repositories;
+
 //https://medium.com/employbl/use-the-repository-design-pattern-in-a-laravel-application-13f0b46a3dce
 //https://itsolutionstuff.com/post/laravel-5-repository-pattern-tutorial-from-scratchexample.html  !!!!!
 //https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/
@@ -10,54 +11,64 @@ use Illuminate\Database\Eloquent\Model;
 //--- interfaces ---
 use XRA\XRA\Interfaces\BaseRepositoryInterface;
 
-class BaseRepository implements BaseRepositoryInterface{
+class BaseRepository implements BaseRepositoryInterface
+{
     // model property on class instances
     protected $model;
 
     // Constructor to bind model to repo
-    public function __construct(Model $model){
+    public function __construct(Model $model)
+    {
         $this->model = $model;
     }
 
     // Get all instances of model
-    public function all(){
+    public function all()
+    {
         return $this->model->all();
     }
 
     // create a new record in the database
-    public function create(array $data){
+    public function create(array $data)
+    {
         return $this->model->create($data);
     }
 
     // update record in the database
-    public function update(array $data, $id){
+    public function update(array $data, $id)
+    {
         $record = $this->find($id);
         return $record->update($data);
     }
 
     // remove record from the database
-    public function delete($id){
+    public function delete($id)
+    {
         return $this->model->destroy($id);
     }
 
     // show the record with the given id
-    public function show($id){
+    public function show($id)
+    {
         return $this->model-findOrFail($id);
     }
 
     // Get the associated model
-    public function getModel(){
+    public function getModel()
+    {
         return $this->model;
     }
 
     // Set the associated model
-    public function setModel($model){
+    public function setModel($model)
+    {
         $this->model = $model;
         return $this;
     }
 
     // Eager load database relationships
-    public function with($relations){
+    public function with($relations)
+    {
         return $this->model->with($relations);
     }
 }

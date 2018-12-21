@@ -1,8 +1,10 @@
 <?php
 namespace XRA\XRA\Services;
+
 use Collective\Html\FormBuilder;
 
-class CustomInputService extends FormBuilder{
+class CustomInputService extends FormBuilder
+{
     /**
      * Generate Bank drop down list
      *
@@ -11,7 +13,8 @@ class CustomInputService extends FormBuilder{
      * @param array $options
      * @return \Illuminate\Support\HtmlString
      */
-    public function selectBank($name, $selected = null, $options = array()){
+    public function selectBank($name, $selected = null, $options = array())
+    {
         $list = [
             "" => "Select Bank...",
             "AB Bank" => "AB Bank",

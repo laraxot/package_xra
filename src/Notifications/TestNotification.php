@@ -7,7 +7,8 @@ use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class TestNotification extends Notification implements ShouldQueue{
+class TestNotification extends Notification implements ShouldQueue
+{
     use Queueable;
 
     /**
@@ -15,7 +16,8 @@ class TestNotification extends Notification implements ShouldQueue{
      *
      * @return void
      */
-    public function __construct(){
+    public function __construct()
+    {
         //
     }
 
@@ -25,11 +27,13 @@ class TestNotification extends Notification implements ShouldQueue{
      * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable){
+    public function via($notifiable)
+    {
         return ['slack'];
     }
 
-    public function toSlack($notifiable){
+    public function toSlack($notifiable)
+    {
         return (new SlackMessage)
             ->content('This is my test message!');
     }

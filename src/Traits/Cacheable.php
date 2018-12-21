@@ -7,7 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Database\Eloquent\Model;
 
-trait Cacheable{
+trait Cacheable
+{
     /**
      * Cache instance
      *
@@ -76,7 +77,7 @@ trait Cacheable{
     public function getCacheKey($method, $args = null, $tag)
     {
         // Sort through arguments
-        foreach($args as &$a) {
+        foreach ($args as &$a) {
             if ($a instanceof Model) {
                 $a = get_class($a).'|'.$a->getKey();
             }
@@ -85,7 +86,8 @@ trait Cacheable{
         // Create hash from arguments and query
         $args = serialize($args) . serialize($this->getScopeQuery());
 
-        return sprintf('%s-%s@%s-%s',
+        return sprintf(
+            '%s-%s@%s-%s',
             config('app.locale'),
             $tag,
             $method,
