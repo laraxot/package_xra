@@ -21,9 +21,8 @@ trait FormRequestTrait
         $trad_name=$pack.'::'.implode('.', $pieces);
         $trad=trans($trad_name);
         if (!is_array($trad)) {
-            $trad=[];
-        }else{
-            ddd($trad_name.' is not an array');
+            //ddd($trad_name.' is not an array');
+            $trad = [];
         }
         $tradGeneric = trans('extend::generic'); //deve funzionare anche senza il pacchetto "food", invece "extend" e' un pacchetto primario
         $trad = array_merge($tradGeneric, $trad);
