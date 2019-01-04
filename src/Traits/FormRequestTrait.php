@@ -25,6 +25,9 @@ trait FormRequestTrait
             $trad = [];
         }
         $tradGeneric = trans('extend::generic'); //deve funzionare anche senza il pacchetto "food", invece "extend" e' un pacchetto primario
+        if (!is_array($tradGeneric)) {
+            $tradGeneric = [];
+        }
         $trad = array_merge($tradGeneric, $trad);
         return $trad;
     }
