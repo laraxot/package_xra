@@ -28,6 +28,14 @@ class ExceptionSlack extends Notification implements ShouldQueue
         $this->msg.=chr(13).'Url    :    '.URL::current();
         $this->msg.=chr(13).'Msg    :    '.$e->getMessage();
         $this->msg.=chr(13).'at     :    '.Carbon::now();
+        if (\Auth::check()) {
+            $this->msg.=chr(13).'user     :    '.\Auth::user()->handle;
+        }
+        $data=json_encode(\Request::all(), JSON_PRETTY_PRINT);
+        $this->msg.=chr(13).'request : '.$data;
+        $this->msg.=chr(13).' -- debug backtrace --';
+        $this->msg.=chr(13).$e->getTraceAsString();
+
     }
 
     /**
