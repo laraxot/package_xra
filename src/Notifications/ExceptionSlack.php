@@ -33,8 +33,8 @@ class ExceptionSlack extends Notification implements ShouldQueue
         }
         $data=json_encode(\Request::all(), JSON_PRETTY_PRINT);
         $this->msg.=chr(13).'request : '.$data;
-        $this->msg.=chr(13).' -- debug backtrace --';
-        $this->msg.=chr(13).$e->getTraceAsString();
+        //$this->msg.=chr(13).' -- debug backtrace --';
+        //$this->msg.=chr(13).$e->getTraceAsString();
 
     }
 
