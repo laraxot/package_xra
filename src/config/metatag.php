@@ -1,4 +1,7 @@
 <?php
+
+
+
 return [
     'title' => 'title',
     'sottotitolo_comune' => 'subtitle',
@@ -26,10 +29,10 @@ return [
 ];
 
 if (isset($_SERVER['SERVER_NAME'])) {
-    $site=include(str_slug(str_replace('www.', '', $_SERVER['SERVER_NAME'])).'/'.basename(__FILE__));
+    $site = include str_slug(\str_replace('www.', '', $_SERVER['SERVER_NAME'])).'/'.\basename(__FILE__);
 } else {
-    $site=[];
+    $site = [];
 }
-$out=array_merge($default, $site);
+$out = \array_merge($default, $site);
 //echo '<pre>';print_r($out);echo '</pre>';
 return $out;

@@ -1,16 +1,18 @@
 <?php
 
+
+
 namespace XRA\XRA\Traits;
 
-use Closure;
 use Carbon\Carbon;
+use Closure;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Database\Eloquent\Model;
 
 trait Cacheable
 {
     /**
-     * Cache instance
+     * Cache instance.
      *
      * @var CacheManager
      */
@@ -47,7 +49,7 @@ trait Cacheable
      */
     public static function getCacheInstance()
     {
-        if (self::$cache === null) {
+        if (null === self::$cache) {
             self::$cache = app('cache');
         }
 
@@ -55,22 +57,22 @@ trait Cacheable
     }
 
     /**
-     * Determine if the cache will be skipped
+     * Determine if the cache will be skipped.
      *
      * @return bool
      */
     public function skippedCache()
     {
-        return config('repositories.cache_enabled', false) === false
-            || app('request')->has(config('repositories.cache_skip_param', 'skipCache')) === true;
+        return false === config('repositories.cache_enabled', false)
+            || true === app('request')->has(config('repositories.cache_skip_param', 'skipCache'));
     }
 
     /**
-     * Get Cache key for the method
+     * Get Cache key for the method.
      *
-     * @param  string $method
-     * @param  mixed  $args
-     * @param  string  $tag
+     * @param string $method
+     * @param mixed  $args
+     * @param string $tag
      *
      * @return string
      */
@@ -79,19 +81,19 @@ trait Cacheable
         // Sort through arguments
         foreach ($args as &$a) {
             if ($a instanceof Model) {
-                $a = get_class($a).'|'.$a->getKey();
+                $a = \get_class($a).'|'.$a->getKey();
             }
         }
 
         // Create hash from arguments and query
-        $args = serialize($args) . serialize($this->getScopeQuery());
+        $args = \serialize($args).\serialize($this->getScopeQuery());
 
-        return sprintf(
+        return \sprintf(
             '%s-%s@%s-%s',
             config('app.locale'),
             $tag,
             $method,
-            md5($args)
+            \md5($args)
         );
     }
 
@@ -101,19 +103,19 @@ trait Cacheable
      * @param string   $method
      * @param array    $args
      * @param \Closure $callback
-     * @param  int     $time
+     * @param int      $time
      *
      * @return mixed
      */
     public function cacheCallback($method, $args, Closure $callback, $time = null)
     {
         // Cache disabled, just execute query & return result
-        if ($this->skippedCache() === true) {
-            return call_user_func($callback);
+        if (true === $this->skippedCache()) {
+            return \call_user_func($callback);
         }
 
         // Use the called class name as the tag
-        $tag = get_called_class();
+        $tag = \get_called_class();
 
         return self::getCacheInstance()->tags(['repositories', $tag])->remember(
             $this->getCacheKey($method, $args, $tag),
@@ -130,12 +132,12 @@ trait Cacheable
     public function flushCache()
     {
         // Cache disabled, just ignore this
-        if ($this->eventFlushCache === false || config('repositories.cache_enabled', false) === false) {
+        if (false === $this->eventFlushCache || false === config('repositories.cache_enabled', false)) {
             return false;
         }
 
         // Use the called class name as the tag
-        $tag = get_called_class();
+        $tag = \get_called_class();
 
         return self::getCacheInstance()->tags(['repositories', $tag])->flush();
     }
@@ -149,9 +151,9 @@ trait Cacheable
      */
     protected function getCacheExpiresTime($time = null)
     {
-        if ($time === self::EXPIRES_END_OF_DAY) {
-            return class_exists(Carbon::class)
-                ? round(Carbon::now()->secondsUntilEndOfDay() / 60)
+        if (self::EXPIRES_END_OF_DAY === $time) {
+            return \class_exists(Carbon::class)
+                ? \round(Carbon::now()->secondsUntilEndOfDay() / 60)
                 : $this->cacheMinutes;
         }
 

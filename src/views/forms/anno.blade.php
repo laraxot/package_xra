@@ -5,7 +5,7 @@
 @include('backend::includes.components')
 <pre>{{ $title }}</pre>
 <?php
-$routename=Request::route()->getName();
+$routename = Request::route()->getName();
 ?>
 {{-- $routename --}}
 {{ Form::open(['route' => $routename]) }}

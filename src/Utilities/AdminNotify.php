@@ -1,8 +1,11 @@
 <?php
+
+
+
 namespace XRA\XRA\Utilities\AdminNotify;
 
-use Illuminate\Notifications\Notification;
 use GuzzleHttp\Client as HttpClient;
+use Illuminate\Notifications\Notification;
 
 abstract class AdminNotify
 {

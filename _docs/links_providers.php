@@ -3,27 +3,26 @@ http://laravel-recipes.com/recipes/199/registering-a-service-provider-with-the-a
 App::register('MyApp\Providers\MyServiceProvider');
 
 // or
-$provider = new MyApp\Providers\MyServiceProvider;
+$provider = new MyApp\Providers\MyServiceProvider();
 App::register($provider);
 
 ?>
 
 https://mattstauffer.co/blog/conditionally-loading-service-providers-in-laravel-5
 
-<?php namespace app\Providers;
+<?php
+
+namespace app\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class links_providers extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
     public function boot()
     {
-        //
     }
 
     /**
@@ -32,8 +31,6 @@ class AppServiceProvider extends ServiceProvider
      * This service provider is a great spot to register your various container
      * bindings with the application. As you can see, we are registering our
      * "Registrar" implementation here. You can add your own bindings too!
-     *
-     * @return void
      */
     public function register()
     {
@@ -42,8 +39,6 @@ class AppServiceProvider extends ServiceProvider
             'App\Services\Registrar'
         );
     }
-
-
 
     public function register()
     {

@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace XRA\XRA\Repositories;
 
 //https://medium.com/employbl/use-the-repository-design-pattern-in-a-laravel-application-13f0b46a3dce
@@ -38,6 +40,7 @@ class BaseRepository implements BaseRepositoryInterface
     public function update(array $data, $id)
     {
         $record = $this->find($id);
+
         return $record->update($data);
     }
 
@@ -50,7 +53,7 @@ class BaseRepository implements BaseRepositoryInterface
     // show the record with the given id
     public function show($id)
     {
-        return $this->model-findOrFail($id);
+        return $this->model - findOrFail($id);
     }
 
     // Get the associated model
@@ -63,6 +66,7 @@ class BaseRepository implements BaseRepositoryInterface
     public function setModel($model)
     {
         $this->model = $model;
+
         return $this;
     }
 

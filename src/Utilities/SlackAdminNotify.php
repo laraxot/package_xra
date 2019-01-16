@@ -1,9 +1,11 @@
 <?php
+
+
+
 namespace XRA\XRA\Utilities\AdminNotify;
 
-use GuzzleHttp\Client as HttpClient;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
+use Illuminate\Notifications\Notification;
 
 class SlackAdminNotify extends AdminNotify
 {
@@ -13,7 +15,7 @@ class SlackAdminNotify extends AdminNotify
     {
         $this->webhookUrl = $config['webhook_url'];
     }
-    
+
     public function send(Notification $notification)
     {
         $this->http->post($this->webhookUrl, $this->buildJsonPayload(
@@ -24,12 +26,13 @@ class SlackAdminNotify extends AdminNotify
     /**
      * Build up a JSON payload for the Slack webhook.
      *
-     * @param  \Illuminate\Notifications\Messages\SlackMessage  $message
+     * @param \Illuminate\Notifications\Messages\SlackMessage $message
+     *
      * @return array
      */
     protected function buildJsonPayload(SlackMessage $message)
     {
-        $optionalFields = array_filter([
+        $optionalFields = \array_filter([
             'channel' => data_get($message, 'channel'),
             'icon_emoji' => data_get($message, 'icon'),
             'icon_url' => data_get($message, 'image'),
@@ -37,8 +40,8 @@ class SlackAdminNotify extends AdminNotify
             'username' => data_get($message, 'username'),
         ]);
 
-        return array_merge([
-            'json' => array_merge([
+        return \array_merge([
+            'json' => \array_merge([
                 'text' => $message->content,
             ], $optionalFields),
         ], $message->http);

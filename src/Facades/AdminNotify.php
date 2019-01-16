@@ -1,4 +1,7 @@
 <?php
+
+
+
 namespace XRA\XRA\Facades;
 
 use Illuminate\Support\Facades\Facade;

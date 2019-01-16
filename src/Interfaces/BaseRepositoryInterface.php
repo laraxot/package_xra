@@ -1,4 +1,7 @@
 <?php
+
+
+
 namespace XRA\XRA\Interfaces;
 
 //https://medium.com/employbl/use-the-repository-design-pattern-in-a-laravel-application-13f0b46a3dce

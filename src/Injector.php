@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
  * This file is part of Laralum.
  *
@@ -21,17 +23,17 @@ use Illuminate\Support\Facades\Facade;
 class Injector extends Facade
 {
     /**
-      * Returns the injection of the specified injector and package.
-      *
-      * @param string $package
-      */
+     * Returns the injection of the specified injector and package.
+     *
+     * @param string $package
+     */
     public static function inject($injector, $package)
     {
-        $dir = __DIR__."/../../".$package."/src/Injectors";
-        $files = is_dir($dir) ? scandir($dir) : [];
+        $dir = __DIR__.'/../../'.$package.'/src/Injectors';
+        $files = \is_dir($dir) ? \scandir($dir) : [];
 
         foreach ($files as $file) {
-            if (substr($file, 0, -4) == $injector and substr($file, -4) == '.php') {
+            if (\mb_substr($file, 0, -4) == $injector and '.php' == \mb_substr($file, -4)) {
                 $file = $dir.'/'.$file;
 
                 return include $file;
