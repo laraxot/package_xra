@@ -109,7 +109,6 @@ if (!\function_exists('getConfigFile')) {
             echo '<h3>'.$config_file.'</h3>';
             dd('['.__LINE__.']['.__FILE__.']');
         }
-
         return [$config_file];
     }
 }
