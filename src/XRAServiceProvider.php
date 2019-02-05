@@ -1,7 +1,4 @@
 <?php
-
-
-
 namespace XRA\XRA;
 
 //https://medium.com/@NahidulHasan/how-to-use-macros-in-laravel-a9078a0610f9
@@ -9,8 +6,14 @@ namespace XRA\XRA;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+
+use Laravel\Scout\EngineManager; // per slegarmi da tntsearch
+
 use XRA\Extend\Traits\ServiceProviderTrait;
-use XRA\XRA\Services\CustomInputService;
+//use XRA\XRA\Services\CustomInputService;
+use XRA\XRA\Services\FullTextSearchEngine;
+
+
 
 class XRAServiceProvider extends ServiceProvider
 {
@@ -36,6 +39,10 @@ class XRAServiceProvider extends ServiceProvider
         ) {
             URL::forceScheme('https');
         }
+
+        resolve(EngineManager::class)->extend('fulltext', function () {
+            return new FullTextSearchEngine;
+        });
 
         Blade::if('prod', function () {
             return app()->environment('production');

@@ -1,0 +1,6 @@
+//---- pezzo di validazione 
+
+$columns = DB::select('show columns from ' . $table_name);
+foreach ($columns as $value) {
+   echo "'" . $value->Field . "' => '" . $value->Type . "|" . ( $value->Null == "NO" ? 'required' : '' ) ."', <br/>" ;
+}
