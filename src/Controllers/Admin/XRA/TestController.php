@@ -1,13 +1,11 @@
 <?php
-
-
-
 namespace XRA\XRA\Controllers\Admin\XRA;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use XRA\Extend\Services\ThemeService;
 //--- services
+use XRA\Extend\Services\ThemeService;
+//-- traits
 use XRA\Extend\Traits\ArtisanTrait;
 
 class TestController extends Controller
