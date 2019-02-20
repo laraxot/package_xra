@@ -1,0 +1,12 @@
+<root>
+    <row>
+        <id>1201</id>
+        <id_padre>1200</id_padre>
+        <nome>Test Form Input</nome>
+        <img>pencil.png</img>
+        <icons>fa fa-pencil</icons>
+        <ordine />
+        <obj>xra.testform.testforminput</obj>
+        <act>index</act>
+    </row>
+</root>

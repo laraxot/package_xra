@@ -1,7 +1,6 @@
 <?php
-
-
 use XRA\Extend\Traits\RouteTrait;
+use XRA\Extend\Services\RouteService;
 
 //die('['.__LINE__.']['.__FILE__.']');
 
@@ -10,6 +9,7 @@ $area = class_basename($namespace);
 
 $item0 = [
     'name' => $area,
+    'param_name'=>'',
     'only' => ['index'],
     'subs' => [
         [
@@ -27,6 +27,14 @@ $item0 = [
                 ['name' => 'navForm'], //end act_n
             ], //end acts
         ], //end sub_n
+        [
+            'name'=>'TestForm',
+            'param_name'=>'',
+            'subs'=>[
+                ['name'=>'TestFormInput'],
+                ['name'=>'TestFormBtn'],
+            ],//end subs
+        ],
         [
             'name' => 'TestImg',
             'only' => ['index'],
@@ -59,9 +67,16 @@ $areas_prgs = [
     $item0,
 ];
 
+$namespace = $this->getNamespace().'\Controllers\Admin';
+
 Route::group(
-    ['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => $namespace.'\Controllers\Admin'],
-    function () use ($areas_prgs) {
-        RouteTrait::dynamic_route($areas_prgs);
+    [
+    'prefix' => 'admin',
+    'middleware' => ['web', 'auth'],
+    'namespace' => $namespace,
+    ],
+    function () use ($areas_prgs,$namespace) {
+        //\XRA\Extend\Library\RouteTrait::dynamic_route($areas_prgs);
+        RouteService::dynamic_route($areas_prgs, null, $namespace);
     }
 );

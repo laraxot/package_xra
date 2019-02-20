@@ -15,9 +15,7 @@ class XRAController extends Controller
         if (1 == $request->routelist) {
             return ArtisanTrait::exe('route:list');
         }
-        $view = ThemeService::getView();
-
-        return view($view);
+        return ThemeService::view();
     }
 
     //end function
