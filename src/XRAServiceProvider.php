@@ -6,13 +6,13 @@ namespace XRA\XRA;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 use Laravel\Scout\EngineManager; // per slegarmi da tntsearch
 
 use XRA\Extend\Traits\ServiceProviderTrait;
 //use XRA\XRA\Services\CustomInputService;
 use XRA\XRA\Services\FullTextSearchEngine;
-
 
 
 class XRAServiceProvider extends ServiceProvider
@@ -80,6 +80,11 @@ class XRAServiceProvider extends ServiceProvider
             }//endforeach
         }//endforeach
         \Config::set('xra.namespaces', $namespaces);
+        
+        //ddd();
+        Relation::morphMap(config('xra.model'));
+
+
         $this->bootTrait($router);
     }
 
