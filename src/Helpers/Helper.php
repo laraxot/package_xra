@@ -6,8 +6,15 @@
 
 if (!\function_exists('ddd')) {
     function ddd($params)
-    {
-        \header('Content-type: text/html');
+    {   
+        /*   
+        try{
+            \header('Content-type: text/html');
+        }catch(\Exception $e)
+                dd($e);
+            // headers already sent 
+        }
+        */
         $tmp = \debug_backtrace();
         $file = $tmp[0]['file'];
         $file = \str_replace('/', DIRECTORY_SEPARATOR, $file);
