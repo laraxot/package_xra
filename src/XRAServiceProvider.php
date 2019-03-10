@@ -31,8 +31,8 @@ class XRAServiceProvider extends ServiceProvider
     public function boot(\Illuminate\Routing\Router $router)
     {
         // Load middlewares
-        $router->aliasMiddleware('checkarea', Middleware\CheckArea::class);
-        //dd($_SERVER);
+        //$router->aliasMiddleware('checkarea', Middleware\CheckArea::class);
+        //ddd($_SERVER);
         if (isset($_SERVER['SERVER_NAME']) && 'localhost' != $_SERVER['SERVER_NAME']
             && isset($_SERVER['REQUEST_SCHEME']) && 'https' == $_SERVER['REQUEST_SCHEME']
             //&& substr($_SERVER['SERVER_NAME'],0,strlen('www.'))=='www.'
@@ -44,48 +44,11 @@ class XRAServiceProvider extends ServiceProvider
             return new FullTextSearchEngine;
         });
 
-        Blade::if('prod', function () {
-            return app()->environment('production');
-        });
-        Blade::if('env', function ($env) {
-            return app()->environment($env);
-        });
-
-        Blade::directive('rn', function ($name) {
-            return '<?php if(Route::currentRouteName() == $name) echo "active"; ?>';
-        });
-
-        $this->bootTrait($router);
-        $enable_packs = config('xra.enable_packs');
-        //echo '<pre>'.print_r($enable_packs).'</pre>';
-        //die('['.__LINE__.']['.__FILE__.']');
-        $namespaces = [];
-        foreach (Packages::allVendors() as $vendor) {
-            foreach (Packages::all($vendor) as $package) {
-                $provider = Packages::provider($package, $vendor);
-                //echo '<br/>'.$vendor.'  '.$package.' '.$provider; //4 debug
-
-                //dd($migrate_packs);
-                // echo '<pre>'.strtolower($package).'</pre>';
-
-                if (!\is_array($enable_packs) || (\is_array($enable_packs) && \in_array(\mb_strtolower($package), $enable_packs, true))) {
-                    //echo '<br/>'.$vendor.'  '.$package.' '.$provider; //4 debug
-                    if ($provider) {
-                        //echo '<br/>'.$vendor.'  '.$package.' '.$provider; //4 debug
-                        $tmp = $vendor.'\\'.$package.'\\'.$provider;
-                        $namespaces[$package] = $vendor.'\\'.$package;
-                        $this->app->register($tmp);
-                    }//endif
-                }
-            }//endforeach
-        }//endforeach
-        \Config::set('xra.namespaces', $namespaces);
-        
-        //ddd();
+        $this->registerBladeDirective();
+        $this->registerPackages();
         Relation::morphMap(config('xra.model'));
-
-
         $this->bootTrait($router);
+
     }
 
     //end function
@@ -100,6 +63,38 @@ class XRAServiceProvider extends ServiceProvider
 
     }
     */
+    public function registerBladeDirective(){
+        Blade::if('prod', function () {
+            return app()->environment('production');
+        });
+        Blade::if('env', function ($env) {
+            return app()->environment($env);
+        });
+
+        Blade::directive('rn', function ($name) {
+            return '<?php if(Route::currentRouteName() == $name) echo "active"; ?>';
+        });
+    }
+
+    public function registerPackages(){
+        $enable_packs = config('xra.enable_packs');
+        $namespaces = [];
+        foreach (Packages::allVendors() as $vendor) {
+            foreach (Packages::all($vendor) as $package) {
+                $provider = Packages::provider($package, $vendor);
+                if (!\is_array($enable_packs) || (\is_array($enable_packs) && \in_array(\mb_strtolower($package), $enable_packs, true))) {
+                    //echo '<br/>'.$vendor.'  '.$package.' '.$provider; //4 debug
+                    if ($provider) {
+                        //echo '<br/>'.$vendor.'  '.$package.' '.$provider; //4 debug
+                        $tmp = $vendor.'\\'.$package.'\\'.$provider;
+                        $namespaces[$package] = $vendor.'\\'.$package;
+                        $this->app->register($tmp);
+                    }//endif
+                }
+            }//endforeach
+        }//endforeach
+        \Config::set('xra.namespaces', $namespaces);
+    }
 
 //--------------------------
 }//end class

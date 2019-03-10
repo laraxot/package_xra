@@ -108,11 +108,11 @@ if (!\function_exists('getConfigFile')) {
         if (!\file_exists($config_file)) {
             //ddd($config_file);
             if (\file_exists(base_path('config/'.$params['file']))) {
-                ddd(base_path('config/'.$params['file']));
+                //ddd(base_path('config/'.$params['file']));
                 return [base_path('config/'.$params['file'])];
             }
             if (\file_exists(base_path('config/'.$params['file'].'.php'))) {
-                ddd('b');
+                //ddd('b');
                 return [base_path('config/'.$params['file'].'.php')];
             }
             echo '<h3>'.$config_file.'</h3>';
