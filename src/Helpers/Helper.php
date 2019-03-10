@@ -105,12 +105,14 @@ if (!\function_exists('getConfigFile')) {
         }
         $server_name = str_slug(\str_replace('www.', '', $_SERVER['SERVER_NAME']));
         $config_file = base_path('config'.DIRECTORY_SEPARATOR.$server_name.DIRECTORY_SEPARATOR.$params['file']);
-
         if (!\file_exists($config_file)) {
+            //ddd($config_file);
             if (\file_exists(base_path('config/'.$params['file']))) {
+                ddd(base_path('config/'.$params['file']));
                 return [base_path('config/'.$params['file'])];
             }
             if (\file_exists(base_path('config/'.$params['file'].'.php'))) {
+                ddd('b');
                 return [base_path('config/'.$params['file'].'.php')];
             }
             echo '<h3>'.$config_file.'</h3>';
