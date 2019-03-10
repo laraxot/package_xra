@@ -30,6 +30,8 @@ class XRAServiceProvider extends ServiceProvider
      */
     public function boot(\Illuminate\Routing\Router $router)
     {
+        \Debugbar::startMeasure('render','XRA Boot');
+        
         // Load middlewares
         //$router->aliasMiddleware('checkarea', Middleware\CheckArea::class);
         //ddd($_SERVER);
@@ -48,7 +50,7 @@ class XRAServiceProvider extends ServiceProvider
         $this->registerPackages();
         Relation::morphMap(config('xra.model'));
         $this->bootTrait($router);
-
+        \Debugbar::stopMeasure('render');
     }
 
     //end function
