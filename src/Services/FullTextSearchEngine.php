@@ -170,4 +170,16 @@ class FullTextSearchEngine extends Engine{
         return $results['count'];
     }
 
+    /**
+     * Flush all of the model's records from the engine.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return void
+     */
+    public function flush($model)
+    {
+        //$index = $this->algolia->initIndex($model->searchableAs());
+        //$index->clearObjects();
+    }
+
 }//end 
