@@ -30,7 +30,6 @@ class XRAServiceProvider extends ServiceProvider
      */
     public function boot(\Illuminate\Routing\Router $router)
     {
-        \Debugbar::startMeasure('render','XRA Boot');
         
         // Load middlewares
         //$router->aliasMiddleware('checkarea', Middleware\CheckArea::class);
@@ -45,13 +44,11 @@ class XRAServiceProvider extends ServiceProvider
         resolve(EngineManager::class)->extend('fulltext', function () {
             return new FullTextSearchEngine;
         });
-
         $this->registerBladeDirective();
         $this->registerPackages();
         Relation::morphMap(config('xra.model'));
         $this->bootTrait($router);
-        \Debugbar::stopMeasure('render');
-    }
+    } 
 
     //end function
     /* //--- non funziona.. fare test per farlo funzionare o si cancella
