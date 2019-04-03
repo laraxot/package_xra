@@ -116,7 +116,7 @@ if (!\function_exists('getConfigFile')) {
                 return [base_path('config/'.$params['file'].'.php')];
             }
             echo '<h3>'.$config_file.'</h3>';
-            dd('['.__LINE__.']['.__FILE__.']');
+            dd('<br/>LINE:['.__LINE__.']['.__FILE__.']');
         }
         return [$config_file];
     }
