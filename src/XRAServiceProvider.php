@@ -1,11 +1,11 @@
 <?php
 namespace XRA\XRA;
-
+use XRA\Extend\BaseServiceProvider;
 //https://medium.com/@NahidulHasan/how-to-use-macros-in-laravel-a9078a0610f9
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\ServiceProvider;
+//use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 use Laravel\Scout\EngineManager; // per slegarmi da tntsearch
@@ -15,7 +15,7 @@ use XRA\Extend\Traits\ServiceProviderTrait;
 use XRA\XRA\Services\FullTextSearchEngine;
 
 
-class XRAServiceProvider extends ServiceProvider
+class XRAServiceProvider extends BaseServiceProvider
 {
 	use ServiceProviderTrait{
 		boot as protected bootTrait;
