@@ -22,6 +22,8 @@ class XRAServiceProvider extends ServiceProvider
 		register as protected registerTrait;
 	}
 
+	protected $defer = true;
+
 	/**
 	 * Bootstrap the application services.
 	 * https://github.com/appstract/laravel-blade-directives/blob/master/src/BladeDirectivesServiceProvider.php
@@ -76,6 +78,17 @@ class XRAServiceProvider extends ServiceProvider
 	}
 
 	/*
+	https://www.larashout.com/creating-custom-laravel-blade-directive
+		Blade::directive('routeis', function ($expression) {
+            return "<?php if (fnmatch({$expression}, Route::currentRouteName())) : ?>";
+        });
+
+        Blade::directive('endrouteis', function ($expression) {
+            return '<?php endif; ?>';
+        });
+
+
+
 	//https://meritocracy.is/blog/2017/09/11/3-laravel-blade-directives-will-save-time/
 	// Add @var for Variable Assignment
 Blade::directive('var', function($expression) {
