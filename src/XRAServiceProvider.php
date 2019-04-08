@@ -1,5 +1,7 @@
 <?php
 namespace XRA\XRA;
+use Illuminate\Support\ServiceProvider;
+
 use XRA\Extend\BaseServiceProvider;
 //https://medium.com/@NahidulHasan/how-to-use-macros-in-laravel-a9078a0610f9
 
@@ -16,14 +18,17 @@ use XRA\Extend\Traits\ServiceProviderTrait;
 use XRA\XRA\Services\FullTextSearchEngine;
 
 
-class XRAServiceProvider extends BaseServiceProvider
-{
+class XRAServiceProvider 
+	extends BaseServiceProvider
+	//extends ServiceProvider
+	{
+	//*
 	use ServiceProviderTrait{
 		boot as protected bootTrait;
 		register as protected registerTrait;
 	}
-
-	protected $defer = true;
+	//*/
+	
 
 	/**
 	 * Bootstrap the application services.
@@ -31,9 +36,16 @@ class XRAServiceProvider extends BaseServiceProvider
 	 * https://meritocracy.is/blog/2017/09/11/3-laravel-blade-directives-will-save-time/
 	 * https://laracasts.com/discuss/channels/laravel/useful-blade-directives.
 	 */
-	public function boot(\Illuminate\Routing\Router $router)
-	{
-		
+	//public function provides(){
+		//dd('['.__LINE__.']['.__FILE__.']provides');
+    //}
+
+	//public function register(){
+	 	//dd('['.__LINE__.']['.__FILE__.']register');	
+	//}
+
+	public function boot(\Illuminate\Routing\Router $router){
+		//dd('['.__LINE__.']['.__FILE__.']boot');
 		// Load middlewares
 		//$router->aliasMiddleware('checkarea', Middleware\CheckArea::class);
 		//ddd($_SERVER);
