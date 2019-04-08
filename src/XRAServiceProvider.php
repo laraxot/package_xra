@@ -5,6 +5,7 @@ use XRA\Extend\BaseServiceProvider;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Cache;
 //use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
@@ -135,9 +136,23 @@ Blade::directive('asset', function($file) {
 	}
 });
 */
-
 	public function registerPackages(){
-		$packages_file=__DIR__.'/../../_packages.json';
+		//$packages=$this->filePackages();
+		$packages=$this->cachePackages();
+		//ddd($packages); 
+		$namespaces=[];
+		foreach($packages as $pack){
+			$namespaces[$pack->name]=$pack->namespace;
+			$tmp=$pack->namespace.'\\'.$pack->provider;
+			$this->app->register($tmp);
+		}
+
+		\Config::set('xra.namespaces', $namespaces);
+	}
+
+	public function filePackages(){
+		//$packages_file=__DIR__.'/../../_packages.json';
+		$packages_file=__DIR__.'/../../_'.str_slug($_SERVER['SERVER_NAME'].'_packages').'.json';
 		//$packages_file=base_path('packages');
 		//ddd(realpath($packages_file));
 		$namespaces = [];
@@ -158,7 +173,7 @@ Blade::directive('asset', function($file) {
 							$pack=new \StdClass();
 							$pack->name=$package;
 							$pack->namespace=$vendor.'\\'.$package;
-							$pack->provider=$provider;
+							$pack->provider=$pack->name.'ServiceProvider';//$provider; //c'e' il baseServiceProvider che rompe..
 							$packages[]=$pack;
 						}//endif
 					}
@@ -169,14 +184,40 @@ Blade::directive('asset', function($file) {
 			$packages=\File::get($packages_file);
         	$packages=json_decode($packages);
 		}
+		return $packages;
+		
+	}
 
-		foreach($packages as $pack){
-			$namespaces[$pack->name]=$pack->namespace;
-			$tmp=$pack->namespace.'\\'.$pack->provider;
-			$this->app->register($tmp);
-		}
+	public function cachePackages(){
+		$cache_key=str_slug($_SERVER['SERVER_NAME'].'_packages');
+		$packages = Cache::store('file')->rememberForever($cache_key, function () {
+			$enable_packs = config('xra.enable_packs');
+			foreach (Packages::allVendors() as $vendor) {
+				foreach (Packages::all($vendor) as $package) {
+					$provider = Packages::provider($package, $vendor);
+					if (!\is_array($enable_packs) || (\is_array($enable_packs) && \in_array(\mb_strtolower($package), $enable_packs, true))) {
+						//echo '<br/>'.$vendor.'  '.$package.' '.$provider; //4 debug
+						if ($provider) {
+							//echo '<br/>'.$vendor.'  '.$package.' '.$provider; //4 debug
+							/*
+							$tmp = 					$vendor.'\\'.$package.'\\'.$provider;
+							$namespaces[$package] = $vendor.'\\'.$package;
+							$this->app->register($tmp);
+							*/
+							$pack=new \StdClass();
+							$pack->name=$package;
+							$pack->namespace=$vendor.'\\'.$package;
+							$pack->provider=$pack->name.'ServiceProvider';//$provider;
+							$packages[]=$pack;
+						}//endif
+					}
+				}//endforeach
+			}//endforeach
+			return $packages;
+		});
 
-		\Config::set('xra.namespaces', $namespaces);
+		//$p=Cache::store('file')->pull($cache_key);
+		return $packages;
 	}
 
 //--------------------------
