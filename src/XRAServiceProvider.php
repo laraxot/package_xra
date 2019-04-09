@@ -19,8 +19,8 @@ use XRA\XRA\Services\FullTextSearchEngine;
 
 
 class XRAServiceProvider 
-	extends BaseServiceProvider
-	//extends ServiceProvider
+	//extends BaseServiceProvider
+	extends ServiceProvider
 	{
 	//*
 	use ServiceProviderTrait{
@@ -36,13 +36,16 @@ class XRAServiceProvider
 	 * https://meritocracy.is/blog/2017/09/11/3-laravel-blade-directives-will-save-time/
 	 * https://laracasts.com/discuss/channels/laravel/useful-blade-directives.
 	 */
-	//public function provides(){
-		//dd('['.__LINE__.']['.__FILE__.']provides');
-    //}
-
-	//public function register(){
-	 	//dd('['.__LINE__.']['.__FILE__.']register');	
-	//}
+	/*
+	public function provides(){
+		dd('['.__LINE__.']['.__FILE__.']provides'); // 1
+    }
+    //*/
+    /*
+	public function register(){
+	 	dd('['.__LINE__.']['.__FILE__.']register');	// 2
+	}
+	*/
 
 	public function boot(\Illuminate\Routing\Router $router){
 		//dd('['.__LINE__.']['.__FILE__.']boot');
