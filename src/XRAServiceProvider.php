@@ -65,6 +65,9 @@ class XRAServiceProvider
 		$this->registerBladeDirective();
 		$this->registerPackages();
 		Relation::morphMap(config('xra.model'));
+		$this->mergeConfigs();
+
+		
 		$this->bootTrait($router);
 	} 
 
@@ -80,6 +83,23 @@ class XRAServiceProvider
 
 	}
 	*/
+
+	public function mergeConfigs(){
+		if (!isset($_SERVER['SERVER_NAME']) || '127.0.0.1' == $_SERVER['SERVER_NAME']) {
+            $_SERVER['SERVER_NAME'] = 'localhost';
+        }
+        $server_name = str_slug(\str_replace('www.', '', $_SERVER['SERVER_NAME']));
+        $configs=['database','filesystems','auth','metatag']; //auth sarebbe da spostare in LU,metatag in extend
+        foreach($configs as $v){
+        	$extra_conf=config($server_name.'.'.$v);
+        	$original_conf=config($v);
+        	$merge_conf=array_merge($original_conf,$extra_conf); //_recursive
+        	\Config::set($v, $merge_conf);
+        }
+
+	}
+
+
 	public function registerBladeDirective(){
 		Blade::if('prod', function () {
 			return app()->environment('production');
