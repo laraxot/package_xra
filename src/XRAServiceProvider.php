@@ -93,6 +93,8 @@ class XRAServiceProvider
         foreach($configs as $v){
         	$extra_conf=config($server_name.'.'.$v);
         	$original_conf=config($v);
+        	if(!is_array($original_conf)) $original_conf=[];
+        	if(!is_array($extra_conf)) $extra_conf=[];
         	$merge_conf=array_merge($original_conf,$extra_conf); //_recursive
         	\Config::set($v, $merge_conf);
         }
