@@ -145,6 +145,12 @@ if (!\function_exists('in_admin')) {
         return 'admin' == \Request::segment(1);
     }
 }
+if (!\function_exists('inAdmin')) {
+    function inAdmin()
+    {
+        return 'admin' == \Request::segment(1);
+    }
+}
 
 
     /**
