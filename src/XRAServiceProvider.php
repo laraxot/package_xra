@@ -89,7 +89,7 @@ class XRAServiceProvider
             $_SERVER['SERVER_NAME'] = 'localhost';
         }
         $server_name = str_slug(\str_replace('www.', '', $_SERVER['SERVER_NAME']));
-        $configs=['database','filesystems','auth','metatag']; //auth sarebbe da spostare in LU,metatag in extend
+        $configs=['database','filesystems','auth','metatag','services']; //auth sarebbe da spostare in LU,metatag in extend
         foreach($configs as $v){
         	$extra_conf=config($server_name.'.'.$v);
         	$original_conf=config($v);
