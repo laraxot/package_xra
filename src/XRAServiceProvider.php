@@ -89,6 +89,7 @@ class XRAServiceProvider
             $_SERVER['SERVER_NAME'] = 'localhost';
         }
         $server_name = str_slug(\str_replace('www.', '', $_SERVER['SERVER_NAME']));
+
         $configs=['database','filesystems','auth','metatag','services']; //auth sarebbe da spostare in LU,metatag in extend
         foreach($configs as $v){
         	$extra_conf=config($server_name.'.'.$v);
@@ -98,7 +99,7 @@ class XRAServiceProvider
         	$merge_conf=array_merge($original_conf,$extra_conf); //_recursive
         	\Config::set($v, $merge_conf);
         }
-
+        //ddd(config('database')); //4debug
 	}
 
 
