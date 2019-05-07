@@ -227,7 +227,8 @@ Blade::directive('asset', function($file) {
 	}
 
 	public function cachePackages(){
-		$cache_key=str_slug($_SERVER['SERVER_NAME'].'_packages');
+		$server_name=isset($_SERVER['SERVER_NAME'])?$_SERVER['SERVER_NAME']:'localhost';
+		$cache_key=str_slug($server_name.'_packages');
 		$packages = Cache::store('file')->rememberForever($cache_key, function () {
 			$enable_packs = config('xra.enable_packs');
 			foreach (Packages::allVendors() as $vendor) {
