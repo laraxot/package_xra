@@ -229,7 +229,7 @@ Blade::directive('asset', function($file) {
 	public function cachePackages(){
 		$server_name=isset($_SERVER['SERVER_NAME'])?$_SERVER['SERVER_NAME']:'localhost';
 		$cache_key=str_slug($server_name.'_packages');
-		$packages = Cache::store('file')->rememberForever($cache_key, function () {
+		$packages = Cache::rememberForever($cache_key, function () {
 			$enable_packs = config('xra.enable_packs');
 			foreach (Packages::allVendors() as $vendor) {
 				foreach (Packages::all($vendor) as $package) {
@@ -255,7 +255,7 @@ Blade::directive('asset', function($file) {
 			return $packages;
 		});
 
-		//$p=Cache::store('file')->pull($cache_key);
+		//$p=Cache::pull($cache_key);
 		return $packages;
 	}
 
