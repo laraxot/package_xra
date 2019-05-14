@@ -64,8 +64,9 @@ class XRAServiceProvider
 		});
 		$this->registerBladeDirective();
 		$this->registerPackages();
-		Relation::morphMap(config('xra.model'));
 		$this->mergeConfigs();
+		$map=config('xra.model');
+		Relation::morphMap($map);
 
 		
 		$this->bootTrait($router);
