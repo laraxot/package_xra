@@ -90,7 +90,9 @@ class XRAServiceProvider
             $_SERVER['SERVER_NAME'] = 'localhost';
         }
         $server_name = str_slug(\str_replace('www.', '', $_SERVER['SERVER_NAME']));
-
+        if(!\File::exists(base_path('config/'.$server_name))){
+        	$server_name = 'localhost';
+        }
         $configs=['database','filesystems','auth','metatag','services','xra']; //auth sarebbe da spostare in LU,metatag in extend
         foreach($configs as $v){
         	$extra_conf=config($server_name.'.'.$v);
