@@ -63,8 +63,8 @@ class XRAServiceProvider
 			return new FullTextSearchEngine;
 		});
 		$this->registerBladeDirective();
-		$this->registerPackages();
 		$this->mergeConfigs();
+		$this->registerPackages();
 		$map=config('xra.model');
 		Relation::morphMap($map);
 
@@ -230,10 +230,13 @@ Blade::directive('asset', function($file) {
 	}
 
 	public function cachePackages(){
+
 		$server_name=isset($_SERVER['SERVER_NAME'])?$_SERVER['SERVER_NAME']:'localhost';
-		$cache_key=str_slug($server_name.'_packages');
+		$cache_key=str_slug($server_name.'_packages').'2';
+
 		$packages = Cache::rememberForever($cache_key, function () {
 			$enable_packs = config('xra.enable_packs');
+			
 			foreach (Packages::allVendors() as $vendor) {
 				foreach (Packages::all($vendor) as $package) {
 					$provider = Packages::provider($package, $vendor);
@@ -257,7 +260,6 @@ Blade::directive('asset', function($file) {
 			}//endforeach
 			return $packages;
 		});
-
 		//$p=Cache::pull($cache_key);
 		return $packages;
 	}
