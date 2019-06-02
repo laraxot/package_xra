@@ -1,0 +1,1 @@
+https://github.com/johnnyfreeman/laravel-custom-relation/blob/master/src/HasCustomRelations.php
