@@ -184,6 +184,23 @@ if (!\function_exists('fullTextWildcards')) {
     }
 }
 
+if (!\function_exists('params2ContainerItem')) {
+    function params2ContainerItem($params){
+        $container=[];
+        $item=[];
+        foreach($params as $k=>$v){
+            $pattern='/(container|item)([0-9]+)/';
+            preg_match($pattern, $k,$matches);
+            if(isset($matches[1]) && isset($matches[2]) ){
+                $sk=$matches[1];
+                $sv=$matches[2];
+                $$sk[$sv]=$v;
+            };
+        }
+        return [$container,$item];
+    }
+}
+
 
 if (!\function_exists('money_format')) {
     // funzione copiata da https://php.net/manual/en/function.money-format.php
