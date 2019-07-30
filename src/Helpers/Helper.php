@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Arr;
 
 
-//namespace XRA\XRA\Helpers;
+//namespace Modules\XRA\Helpers;
 
 if (!\function_exists('ddd')) {
     function ddd($params)
@@ -25,8 +26,8 @@ if (!\function_exists('ddd')) {
         $dir_copy = \implode(DIRECTORY_SEPARATOR, $dir_piece);
         $file = \str_replace($dir_copy, $doc_root, $file);
         echo '<h3>LINE: ['.$tmp[0]['line'].']<br/>
-		FILE: ['.$file.']<br/>
-		</h3>';
+        FILE: ['.$file.']<br/>
+        </h3>';
         dd($params);
     }
 }
@@ -200,6 +201,178 @@ if (!\function_exists('params2ContainerItem')) {
         return [$container,$item];
     }
 }
+
+
+if (!\function_exists('getModuleModels')) {
+    function getModuleModels($module){
+        if(Str::startsWith($module,'trasferte')){ //caso eccezzionale 
+            $module='trasferte';
+        }
+        $mod=\Module::find($module);
+        if($mod==null) return [];
+        $mod_path=$mod->getPath().'/Models';
+        $mod_path=str_replace(['\\','/'],[DIRECTORY_SEPARATOR,DIRECTORY_SEPARATOR],$mod_path);
+        $files = File::files($mod_path);
+        $data=[]; 
+        $ns='Modules\\'.$mod->name.'\\Models';  // con la barra davanti non va il search ?
+        foreach($files as $file){
+            $filename=$file->getRelativePathname();
+            $ext='.php';
+            if(ends_with($filename,$ext)){
+                $tmp=new \stdClass();
+                $name=substr(($filename),0,-strlen($ext));
+                $tmp->class=$ns.'\\'.$name;
+                $name=Str::snake($name);
+                $tmp->name=$name;
+                $data[$tmp->name]=$tmp->class;
+                
+            }
+        }
+        return $data;
+    }
+}
+
+if (!\function_exists('tenantName')) {
+    function tenantName($params=[]){
+        if (!isset($_SERVER['SERVER_NAME']) || '127.0.0.1' == $_SERVER['SERVER_NAME']) {
+            $_SERVER['SERVER_NAME'] = 'localhost';
+        }
+        $server_name = str_slug(\str_replace('www.', '', $_SERVER['SERVER_NAME']));
+        if(!\File::exists(base_path('config/'.$server_name))){
+            $server_name = 'localhost';
+        }
+        return $server_name;
+    }//end function
+}
+
+if (!\function_exists('xotModel')) {
+    function xotModel($name){
+        $model=tenantConfig('xra.model.'.$name);
+        return new $model;
+    }
+}    
+
+if (!\function_exists('tenantConfig')) {
+    function tenantConfig($key){
+        $group=implode('.',array_slice(explode('.',$key),0,2));
+        if(in_admin() && Str::startsWith($key,'xra.model') ){
+            $module_name=\Request::segment(2);
+            $models=getModuleModels($module_name);
+            $original_conf=config('xra.model');
+            if(!is_array($original_conf))$original_conf=[];
+            $merge_conf=array_merge($original_conf,$models);
+            \Config::set('xra.model', $merge_conf);
+        }
+        $tenant_name=tenantName();
+        $extra_conf=config($tenant_name.'.'.$group);
+        $original_conf=config($group);
+        //ddd($extra_conf);
+        if(!is_array($original_conf)) $original_conf=[];
+        if(!is_array($extra_conf)) $extra_conf=[];
+        $merge_conf=array_merge($original_conf,$extra_conf); //_recursive
+        \Config::set($group, $merge_conf);  // non so se metterlo ..
+        return config($key);
+    }
+}
+
+if (!\function_exists('transFields')) {
+    function transFields($params){
+        extract($params);
+        $ris=new \stdClass();
+        $start=0;
+        if(in_admin()){
+            $start=1;
+        }
+       
+        $name=bracketsToDotted($name);
+        $pattern= '/\.[0-9]+\./m';
+        $name=preg_replace($pattern,'.',$name);
+        
+        list($ns,$key)=explode('::',$view);
+        $view_noact=$ns.'::'.implode('.',array_slice(explode('.',$key),$start,-1));
+
+
+
+        $trans=$view_noact.'.field.'.$name;
+        $ris->label=isset($label)?$label:trans($trans);
+        //if($ris->label==$trans) $ris->label=$name;
+        $trans=$view_noact.'.field.'.$name.'_placeholder';
+        $ris->placeholder=trans($trans);
+        if($ris->placeholder==$trans) $ris->placeholder=' ';
+        $attributes=$params;
+        $attrs_default=['class' => 'form-control','placeholder'=>$ris->placeholder];
+        $ris->attributes=array_merge($attrs_default, $attributes);
+        return $ris;
+    }
+}
+
+if (!\function_exists('debug_getter_obj')){
+    function debug_getter_obj($params){
+        extract($params);
+        $methods=collect(get_class_methods($obj))->filter(function($item){
+            $exclude=[
+                //--Too few arguments to function
+                'getRelationExistenceQuery',  
+                'getRelationExistenceQueryForSelfRelation',
+                'getRelationExistenceCountQuery',
+                'getMorphedModel',
+                'getRelationExistenceQueryForSelfJoin',
+                //--altri errori --
+            ];
+            return (Str::startsWith($item,'get')  && !in_array($item,$exclude)  );
+        })->map(function($item) use($obj) {
+            $tmp=[];
+            $tmp['name']=$item;
+            try{
+                $tmp['ris']=$obj->$item();
+            }catch(\Exception $e){
+                $tmp['ris']=$e->getMessage();
+            }
+            return $tmp;
+        });
+        //->dd();
+        $html='<table border="1">
+        <thead>
+        <tr>
+        <th>Name</th>
+        <th>Ris</th>
+        </tr>
+        </thead>';
+        foreach($methods as $k=>$v){
+            $html.='<tr>';
+            $html.='<td>'.$v['name'].'</td>';
+            $val=$v['ris'];
+            if(is_object($val)){
+                $val='(Object) '.get_class($val);
+            }
+            $html.='<td>'.$val.'</td>';
+            $html.='</tr>';
+            
+        }
+        $html.='</table>';
+        echo $html;
+        ddd($methods);
+    }//end function
+}//end exists
+
+
+if (!\function_exists('bracketsToDotted')) {
+ // privacies[111][pivot][title] => privacies.111.pivot.title 
+    function bracketsToDotted($str,$quotation_marks=''){
+        return str_replace(['[',']'],['.',''],$str);
+    }
+}
+if (!\function_exists('dottedToBrackets')) {
+ // privacies.111.pivot.title => privacies[111][pivot][title] 
+    function dottedToBrackets($str,$quotation_marks=''){
+        $str=collect(explode('.',$str))->map(function ($v, $k){
+            return $k==0?$v:'['.$v.']';
+        })->implode('');
+        return $str;
+    }
+}
+
+
 
 
 if (!\function_exists('money_format')) {
