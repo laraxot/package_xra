@@ -8,6 +8,7 @@ use XRA\Extend\BaseServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 //use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
@@ -64,6 +65,9 @@ class XRAServiceProvider
 		});
 		$this->registerBladeDirective();
 		$this->mergeConfigs();
+		//ddd(config('database'));
+
+
 		$this->registerPackages();
 		$map=config('xra.model');
 		Relation::morphMap($map);
